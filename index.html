@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Half-Life</title>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game">
+      <div class="menu-wrapper">
+        <div class="menu" data-menu="main">
+          <div class="controls">
+            <div class="min button"></div>
+            <div
+              class="cls button"
+              data-action="dialog"
+              data-show-dialog="close-dialog"
+            ></div>
+          </div>
+          <div class="logo-wrapper">
+            <div class="logo"></div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="n"
+                data-action="menu"
+                ><u>N</u>ew game</a
+              >
+              <small>Start a new game.</small>
+            </div>
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="h"
+                data-action="play"
+                ><u>H</u>azard course</a
+              >
+              <small>Learn how to play Half-Life.</small>
+            </div>
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="c"
+                data-action="menu"
+                ><u>C</u>onfiguration</a
+              >
+              <small>Change game settings, configure controls.</small>
+            </div>
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="l"
+                data-action="menu"
+                ><u>L</u>oad game</a
+              >
+              <small>Load a previously saved game.</small>
+            </div>
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="m"
+                data-action="menu"
+                ><u>M</u>ultiplayer</a
+              >
+              <small
+                >Search for Half-Life servers, chat with other players,
+                configure character.</small
+              >
+            </div>
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="u"
+                data-action="menu"
+                >C<u>u</u>stom game</a
+              >
+              <small
+                >Select a custom game, search the Internet for custom
+                games</small
+              >
+            </div>
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="v"
+                data-action="dialog"
+                data-show-dialog="readme-dialog"
+                ><u>V</u>iew readme</a
+              >
+              <small>View the Readme.txt file.</small>
+            </div>
+            <div class="menu-item">
+              <a
+                href="http://www.valvesoftware.com/projects.htm"
+                target="_blank"
+                class="button text-button"
+                data-key="p"
+                data-action="link"
+                ><u>P</u>reviews</a
+              >
+              <small>Find out more about Valve's product lineup.</small>
+            </div>
+            <div class="menu-item">
+              <a
+                href="#"
+                class="button text-button"
+                data-key="q"
+                data-action="dialog"
+                data-show-dialog="close-dialog"
+                ><u>Q</u>uit</a
+              >
+              <small>Quit playing Half-Life.</small>
+            </div>
+          </div>
+          <div class="dialog" id="close-dialog">
+            <div class="dialog-box">
+              <div class="caption">Are you sure you want to quit?</div>
+              <div class="actions">
+                <a
+                  href="#"
+                  class="button text-button"
+                  data-key="o"
+                  data-action="dialog"
+                  data-hide-dialog="close-dialog"
+                  ><u>O</u>k</a
+                >
+                <a
+                  href="#"
+                  class="button text-button"
+                  data-key="c"
+                  data-action="dialog"
+                  data-hide-dialog="close-dialog"
+                  ><u>C</u>ancel</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="dialog" id="readme-dialog">
+            <div class="dialog-box">
+              <div class="caption">hl by jsagayap</div>
+              <div class="actions">
+                <a
+                  href="https://github.com/jsagayap/hl"
+                  target="_blank"
+                  class="button text-button"
+                  data-key="s"
+                  data-action="dialog"
+                  data-hide-dialog="readme-dialog"
+                  ><u>S</u>ource Code</a
+                >
+                <a
+                  href="#"
+                  class="button text-button"
+                  data-key="o"
+                  data-action="dialog"
+                  data-hide-dialog="readme-dialog"
+                  ><u>O</u>k</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="version">
+            <small>v46/1.1.1.0</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Script file -->
+    <script src="script.js"></script>
+  </body>
+</html>
