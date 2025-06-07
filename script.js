@@ -1,16 +1,20 @@
-const sounds = {
-  select: new Audio("/assets/media/select.mp3"),
-  up_menu: new Audio("/assets/media/up_menu.mp3"),
-};
-
 // Get all menu buttons
 const buttons = document.querySelectorAll(".button");
 
 // Get close dialog
 const closeDialog = document.getElementById("close-dialog");
 
+// Set current menu
+let currentMenu = "main";
+
 // Set last pressed button
 let lastPressed = "n";
+
+// Sounds
+const sounds = {
+  select: new Audio("/assets/media/select.mp3"),
+  up_menu: new Audio("/assets/media/up_menu.mp3"),
+};
 
 // Add sound and action for each button
 buttons.forEach((button) => {
@@ -19,11 +23,12 @@ buttons.forEach((button) => {
     lastPressed =
       button.dataset.key && !button.dataset.hideDialog
         ? button.dataset.key
-        : "n";
+        : lastPressed;
     const action = button.dataset.action;
 
     // Check for action value
     if (action == "menu") {
+      // Imitate HL's up menu sound
       setTimeout(() => {
         sounds["select"].pause();
         sounds["select"].currentTime = 0;
@@ -51,10 +56,14 @@ function isHidden(element) {
 // Detect keystroke
 document.addEventListener("keydown", function (event) {
   const dialogs = document.querySelectorAll(".dialog");
-  let menuItem = document.querySelector(`.menu-list [data-key="${event.key}"]`);
+  let menuItem = document.querySelector(
+    `.menu[data-menu="${currentMenu}"] [data-key="${event.key}"]`
+  );
+
   let escPressed = false;
   let foundDialog = false;
 
+  // Check if user pressed Esc
   if (event.key === "Escape") {
     escPressed = true;
   }
@@ -68,16 +77,21 @@ document.addEventListener("keydown", function (event) {
       foundDialog = dialogId != "close-dialog" ? true : false;
     }
   });
-  if (!foundDialog && escPressed) {
+  // Check if no other dialog is found, Esc key is pressed, and is in main menu
+  if (!foundDialog && escPressed && currentMenu == "main") {
     closeDialog.classList.toggle("show");
 
+    // Highlight the last menu button pressed
     if (!closeDialog.classList.contains("show")) {
       hoverOnKey(
-        document.querySelector(`.menu-list [data-key="${lastPressed}"]`),
+        document.querySelector(
+          `.menu[data-menu="${currentMenu}"] [data-key="${lastPressed}"]`
+        ),
         25
       );
     }
   }
+  // If a matching menu key is found, press it
   if (menuItem) {
     menuItem.click();
     hoverOnKey(menuItem, 25);
